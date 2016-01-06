@@ -5,6 +5,7 @@ if defined?(AssetSync)
     aws_secret_access_key = app_config.aws_secret_access_key
     fog_directory         = app_config.FOG_DIRECTORY
     fog_provider          = app_config.FOG_PROVIDER
+    fog_region            = app_config.FOG_REGION
 
     enabled = [aws_access_key_id, aws_secret_access_key, fog_directory].all? { |x| x.is_some? }
 
@@ -26,6 +27,7 @@ if defined?(AssetSync)
       config.fog_directory         = fog_directory.get
       config.aws_access_key_id     = aws_access_key_id.get
       config.aws_secret_access_key = aws_secret_access_key.get
+      config.fog_region            = fog_region.get
     end
 
     config.gzip_compression = app_config.ASSET_SYNC_GZIP_COMPRESSION.or_else(false)
